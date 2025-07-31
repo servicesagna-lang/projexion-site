@@ -3,44 +3,131 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ProjeXion - Accompagnement des jeunes entrepreneurs</title>
+  <meta name="description" content="ProjeXion accompagne les jeunes entrepreneurs sénégalais avec du financement, de l'accompagnement et de la visibilité pour leurs projets.">
+  <meta name="keywords" content="Sénégal, entrepreneuriat, financement, projets jeunes, accompagnement">
+  <title>ProjeXion - Accompagnement des jeunes entrepreneurs au Sénégal</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f4f4f4; color: #333; }
-    header { background: #111C4E; color: white; padding: 1rem; text-align: center; }
-    nav { background: #1E2D6B; padding: 1rem; text-align: center; }
-    nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
-    section { padding: 2rem; max-width: 1000px; margin: auto; background: white; margin-top: 1rem; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-    footer { background: #111C4E; color: white; text-align: center; padding: 1rem; margin-top: 2rem; }
-    h2 { color: #1E2D6B; }
+    body { 
+      font-family: 'Arial', sans-serif; 
+      margin: 0; 
+      padding: 0; 
+      background: #f4f4f4; 
+      color: #333; 
+      line-height: 1.6;
+    }
+    header { 
+      background: #111C4E; 
+      color: white; 
+      padding: 2rem 1rem; 
+      text-align: center; 
+    }
+    nav { 
+      background: #1E2D6B; 
+      padding: 1rem; 
+      text-align: center; 
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav a { 
+      color: white; 
+      margin: 0 15px; 
+      text-decoration: none; 
+      font-weight: bold; 
+      transition: all 0.3s ease;
+    }
+    nav a:hover {
+      text-decoration: underline;
+      opacity: 0.8;
+    }
+    section { 
+      padding: 2rem; 
+      max-width: 1000px; 
+      margin: 1rem auto; 
+      background: white; 
+      border-radius: 8px; 
+      box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+    }
+    footer { 
+      background: #111C4E; 
+      color: white; 
+      text-align: center; 
+      padding: 2rem 1rem; 
+      margin-top: 2rem; 
+    }
+    h1, h2 { 
+      color: #1E2D6B; 
+    }
     .whatsapp-button {
       display: inline-block;
       background-color: #25D366;
       color: white;
-      padding: 10px 20px;
+      padding: 12px 24px;
       border-radius: 5px;
       text-decoration: none;
       font-weight: bold;
+      transition: background-color 0.3s;
+      margin-top: 1rem;
     }
     .whatsapp-button:hover {
       background-color: #1ebe57;
     }
-    form label {
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    label {
       display: block;
-      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
     }
-    form input, form select, form textarea {
+    input, textarea, select {
       width: 100%;
-      padding: 8px;
-      margin-top: 5px;
-      box-sizing: border-box;
+      padding: 10px;
+      margin-bottom: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
     }
-    form button {
+    button[type="submit"] {
       background: #1E2D6B;
       color: white;
       border: none;
-      padding: 10px 20px;
-      margin-top: 1rem;
+      padding: 12px 24px;
+      border-radius: 5px;
       cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+    button[type="submit"]:hover {
+      background: #111C4E;
+    }
+    #confirmation {
+      display: none;
+      background: #d4edda;
+      color: #155724;
+      padding: 1rem;
+      border-radius: 4px;
+      margin-top: 1rem;
+      text-align: center;
+    }
+    .social-links {
+      margin-top: 1rem;
+    }
+    .social-links a {
+      color: white;
+      margin: 0 10px;
+      font-size: 1.5rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav a {
+        display: block;
+        margin: 10px 0;
+      }
+      section {
+        padding: 1.5rem;
+      }
     }
   </style>
 </head>
@@ -53,7 +140,6 @@
 
   <nav>
     <a href="#about">À propos</a>
-    <a href="#testimonies">Témoignages</a>
     <a href="#projects">Nos projets</a>
     <a href="#partners">Partenaires</a>
     <a href="#submit">Soumettre un projet</a>
@@ -62,19 +148,49 @@
 
   <section id="about">
     <h2>À propos</h2>
-    <p>ProjeXion est une initiative dédiée au soutien des jeunes porteurs de projets au Sénégal.</p>
+    <p>ProjeXion est une initiative dédiée au soutien des jeunes porteurs de projets au Sénégal. Nous offrons du financement, de l'accompagnement et de la visibilité aux initiatives les plus prometteuses.</p>
+    <p>Notre mission : transformer les idées en entreprises durables et impactantes.</p>
+  </section>
+
+  <section id="projects">
+    <h2>Nos projets soutenus</h2>
+    <div class="project-grid">
+      <div class="project">
+        <h3>Projet Agro-Transformation</h3>
+        <p>Transformation de produits locaux à Ziguinchor : création d'une unité de production de jus naturels.</p>
+      </div>
+      <div class="project">
+        <h3>EdTech Mobile</h3>
+        <p>Application mobile d'éducation à Dakar pour les élèves en zones rurales.</p>
+      </div>
+      <div class="project">
+        <h3>Élevage moderne</h3>
+        <p>Élevage durable à Kolda avec suivi vétérinaire via SMS.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="partners">
+    <h2>Partenaires</h2>
+    <p>Nous collaborons avec des organisations engagées pour l'entrepreneuriat jeune :</p>
+    <ul>
+      <li>ONG Investisseurs & Partenaires</li>
+      <li>Ministère de la Jeunesse du Sénégal</li>
+      <li>Réseau des incubateurs africains</li>
+    </ul>
+    <p>Envie de devenir partenaire ? <a href="#contact">Contactez-nous</a>.</p>
   </section>
 
   <section id="submit">
     <h2>Soumettre un projet</h2>
-    <form action="https://formspree.io/f/xrbkallg" method="POST">
-      <label>Nom du porteur :
-        <input type="text" name="name" required>
-      </label>
+    <form action="https://formspree.io/f/xrbkallg" method="POST" id="project-form">
+      <label>Nom complet :<input type="text" name="name" required></label>
       
-      <label>Email :
-        <input type="email" name="email" required>
-      </label>
+      <label>Email :<input type="email" name="email" required></label>
+      
+      <label>Téléphone :<input type="tel" name="phone" required></label>
+      
+      <label>Ville/Région :<input type="text" name="location" required></label>
       
       <label>Secteur d'activité :
         <select name="sector" required>
@@ -90,20 +206,83 @@
           <option value="education">Éducation</option>
           <option value="ecommerce">E-commerce</option>
           <option value="batiment">Bâtiment</option>
+          <option value="technologie">Technologie</option>
+          <option value="autre">Autre</option>
         </select>
       </label>
       
-      <label>Description du projet :
-        <textarea name="description" rows="5" required></textarea>
-      </label>
+      <label>Description du projet (objectifs, impact) :<textarea name="description" rows="5" required></textarea></label>
       
-      <button type="submit">Soumettre</button>
+      <label>Budget estimé (FCFA) :<input type="number" name="budget"></label>
+      
+      <button type="submit">Soumettre mon projet</button>
     </form>
+    <div id="confirmation">
+      Merci ! Votre projet a été soumis avec succès. Nous vous contacterons dans les 72h.
+    </div>
+    <br>
+    <a class="whatsapp-button" href="https://wa.me/221762637871" target="_blank">📲 Poser des questions via WhatsApp</a>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>
+      <strong>Nom :</strong> ProjeXion Admin<br>
+      <strong>Email :</strong> <a href="mailto:contact@projexion.sn">contact@projexion.sn</a><br>
+      <strong>Téléphone :</strong> +221 76 263 78 71<br>
+      <strong>Adresse :</strong> Dakar, Sénégal
+    </p>
+    <p><a class="whatsapp-button" href="https://wa.me/221762637871" target="_blank">📲 Discuter sur WhatsApp</a></p>
+    
+    <div class="social-links">
+      <p>Suivez-nous :</p>
+      <a href="#" aria-label="Facebook"><span>📘</span></a>
+      <a href="#" aria-label="LinkedIn"><span>🔗</span></a>
+      <a href="#" aria-label="Instagram"><span>📸</span></a>
+    </div>
   </section>
 
   <footer>
-    &copy; 2025 ProjeXion. Tous droits réservés.
+    <p>&copy; 2025 ProjeXion. Tous droits réservés.</p>
+    <p><a href="#" style="color: white; text-decoration: underline;">Mentions légales</a></p>
   </footer>
 
+  <script>
+    // Gestion de la soumission du formulaire
+    document.getElementById('project-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const formData = new FormData(form);
+      
+      fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
+      .then(response => {
+        if (response.ok) {
+          form.style.display = 'none';
+          document.getElementById('confirmation').style.display = 'block';
+          form.reset();
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert("Une erreur s'est produite. Veuillez réessayer ou nous contacter via WhatsApp.");
+      });
+    });
+
+    // Smooth scrolling pour les ancres
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
 </body>
 </html>
