@@ -3,278 +3,186 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="ProjeXion accompagne les jeunes entrepreneurs sénégalais avec du financement, de l'accompagnement et de la visibilité pour leurs projets.">
-  <meta name="keywords" content="Sénégal, entrepreneuriat, financement, projets jeunes, accompagnement">
-  <title>ProjeXion - Accompagnement des jeunes entrepreneurs au Sénégal</title>
+  <title>ProjeXion - Soumettre un projet</title>
   <style>
-    body { 
-      font-family: 'Arial', sans-serif; 
-      margin: 0; 
-      padding: 0; 
-      background: #f4f4f4; 
-      color: #333; 
-      line-height: 1.6;
+    .sector-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 12px;
+      margin: 1rem 0;
     }
-    header { 
-      background: #111C4E; 
-      color: white; 
-      padding: 2rem 1rem; 
-      text-align: center; 
-    }
-    nav { 
-      background: #1E2D6B; 
-      padding: 1rem; 
-      text-align: center; 
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    nav a { 
-      color: white; 
-      margin: 0 15px; 
-      text-decoration: none; 
-      font-weight: bold; 
-      transition: all 0.3s ease;
-    }
-    nav a:hover {
-      text-decoration: underline;
-      opacity: 0.8;
-    }
-    section { 
-      padding: 2rem; 
-      max-width: 1000px; 
-      margin: 1rem auto; 
-      background: white; 
-      border-radius: 8px; 
-      box-shadow: 0 0 10px rgba(0,0,0,0.1); 
-    }
-    footer { 
-      background: #111C4E; 
-      color: white; 
-      text-align: center; 
-      padding: 2rem 1rem; 
-      margin-top: 2rem; 
-    }
-    h1, h2 { 
-      color: #1E2D6B; 
-    }
-    .whatsapp-button {
-      display: inline-block;
-      background-color: #25D366;
-      color: white;
-      padding: 12px 24px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background-color 0.3s;
-      margin-top: 1rem;
-    }
-    .whatsapp-button:hover {
-      background-color: #1ebe57;
-    }
-    form {
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    label {
-      display: block;
-      margin-bottom: 0.5rem;
-      font-weight: bold;
-    }
-    input, textarea {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 1rem;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-    }
-    button[type="submit"] {
-      background: #1E2D6B;
-      color: white;
-      border: none;
-      padding: 12px 24px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: background-color 0.3s;
-    }
-    button[type="submit"]:hover {
-      background: #111C4E;
-    }
-    #confirmation {
-      display: none;
-      background: #d4edda;
-      color: #155724;
+    
+    .sector-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       padding: 1rem;
-      border-radius: 4px;
-      margin-top: 1rem;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: white;
       text-align: center;
+      min-height: 100px;
     }
-    .social-links {
-      margin-top: 1rem;
+    
+    .sector-card:hover {
+      border-color: #1E2D6B;
+      box-shadow: 0 5px 15px rgba(30, 45, 107, 0.1);
     }
-    .social-links a {
-      color: white;
-      margin: 0 10px;
-      font-size: 1.5rem;
+    
+    .sector-card.selected {
+      background: #f0f5ff;
+      border-color: #1E2D6B;
     }
-
-    /* Responsive */
+    
+    .sector-icon {
+      font-size: 24px;
+      margin-bottom: 8px;
+      display: block;
+    }
+    
+    input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+    }
+    
     @media (max-width: 768px) {
-      nav a {
-        display: block;
-        margin: 10px 0;
-      }
-      section {
-        padding: 1.5rem;
+      .sector-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
   </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-  <header>
-    <h1>ProjeXion</h1>
-    <p>Libère ton potentiel, on finance ton projet !</p>
-  </header>
-
-  <nav>
-    <a href="#about">À propos</a>
-    <a href="#projects">Nos projets</a>
-    <a href="#partners">Partenaires</a>
-    <a href="#submit">Soumettre un projet</a>
-    <a href="#contact">Contact</a>
-  </nav>
-
-  <section id="about">
-    <h2>À propos</h2>
-    <p>ProjeXion est une initiative dédiée au soutien des jeunes porteurs de projets au Sénégal. Nous offrons du financement, de l'accompagnement et de la visibilité aux initiatives les plus prometteuses.</p>
-    <p>Notre mission : transformer les idées en entreprises durables et impactantes.</p>
-  </section>
-
-  <section id="projects">
-    <h2>Nos projets soutenus</h2>
-    <div class="project-grid">
-      <div class="project">
-        <h3>Projet Agro-Transformation</h3>
-        <p>Transformation de produits locaux à Ziguinchor : création d'une unité de production de jus naturels.</p>
-      </div>
-      <div class="project">
-        <h3>EdTech Mobile</h3>
-        <p>Application mobile d'éducation à Dakar pour les élèves en zones rurales.</p>
-      </div>
-      <div class="project">
-        <h3>Élevage 2.0</h3>
-        <p>Élevage durable à Kolda avec suivi vétérinaire via SMS.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="partners">
-    <h2>Partenaires</h2>
-    <p>Nous collaborons avec des organisations engagées pour l'entrepreneuriat jeune :</p>
-    <ul>
-      <li>ONG Investisseurs & Partenaires</li>
-      <li>Ministère de la Jeunesse du Sénégal</li>
-      <li>Réseau des incubateurs africains</li>
-    </ul>
-    <p>Envie de devenir partenaire ? <a href="#contact">Contactez-nous</a>.</p>
-  </section>
-
-  <section id="submit">
-    <h2>Soumettre un projet</h2>
-    <form action="https://formspree.io/f/xrbkallg" method="POST" id="project-form">
-      <label>Nom complet :<input type="text" name="name" required></label>
-      
-      <label>Email :<input type="email" name="email" required></label>
-      
-      <label>Téléphone :<input type="tel" name="phone" required></label>
-      
-      <label>Ville/Région :<input type="text" name="location" required></label>
-      
-      <label>Secteur d'activité :
-        <select name="sector" required>
-          <option value="">-- Sélectionnez --</option>
-          <option value="agriculture">Agriculture</option>
-          <option value="technologie">Technologie</option>
-          <option value="education">Éducation</option>
-          <option value="sante">Santé</option>
-          <option value="autre">Autre</option>
-        </select>
-      </label>
-      
-      <label>Description du projet (objectifs, impact) :<textarea name="description" rows="5" required></textarea></label>
-      
-      <label>Budget estimé (FCFA) :<input type="number" name="budget"></label>
-      
-      <button type="submit">Soumettre mon projet</button>
-    </form>
-    <div id="confirmation">
-      Merci ! Votre projet a été soumis avec succès. Nous vous contacterons dans les 72h.
-    </div>
-    <br>
-    <a class="whatsapp-button" href="https://wa.me/221762637871" target="_blank">📲 Poser des questions via WhatsApp</a>
-  </section>
-
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>
-      <strong>Nom :</strong> Apa Romarick Alexis Sagna<br>
-      <strong>Email :</strong> <a href="mailto:servicesagna@gmail.com">servicesagna@gmail.com</a><br>
-      <strong>Téléphone :</strong> +221 76 263 78 71 / 77 236 61 74<br>
-      <strong>Adresse :</strong> Dakar, Sénégal
-    </p>
-    <p><a class="whatsapp-button" href="https://wa.me/221762637871" target="_blank">📲 Discuter sur WhatsApp</a></p>
+<section id="submit">
+  <h2>Soumettre un projet</h2>
+  <form action="https://formspree.io/f/xrbkallg" method="POST" id="project-form">
     
-    <div class="social-links">
-      <p>Suivez-nous :</p>
-      <a href="#" aria-label="Facebook"><span>📘</span></a>
-      <a href="#" aria-label="LinkedIn"><span>🔗</span></a>
-      <a href="#" aria-label="Instagram"><span>📸</span></a>
-    </div>
-  </section>
+    <!-- Champs existants... -->
+    
+    <fieldset>
+      <legend>Secteur d'activité principal</legend>
+      <div class="sector-grid">
+        <!-- Agriculture -->
+        <label class="sector-card">
+          <input type="radio" name="sector" value="agriculture" required>
+          <span class="sector-icon"><i class="fas fa-leaf"></i></span>
+          Agriculture
+        </label>
+        
+        <!-- Énergie -->
+        <label class="sector-card">
+          <input type="radio" name="sector" value="energie">
+          <span class="sector-icon"><i class="fas fa-solar-panel"></i></span>
+          Énergie renouvelable
+        </label>
+        
+        <!-- Électricité -->
+        <label class="sector-card">
+          <input type="radio" name="sector" value="electricite">
+          <span class="sector-icon"><i class="fas fa-bolt"></i></span>
+          Électricité
+        </label>
+        
+        <!-- Informatique -->
+        <label class="sector-card">
+          <input type="radio" name="sector" value="informatique">
+          <span class="sector-icon"><i class="fas fa-laptop-code"></i></span>
+          Informatique
+        </label>
+        
+        <!-- Santé -->
+        <label class="sector-card">
+          <input type="radio" name="sector" value="sante">
+          <span class="sector-icon"><i class="fas fa-heartbeat"></i></span>
+          Santé
+        </label>
+        
+        <!-- Éducation -->
+        <label class="sector-card">
+          <input type="radio" name="sector" value="education">
+          <span class="sector-icon"><i class="fas fa-graduation-cap"></i></span>
+          Éducation
+        </label>
+        
+        <!-- E-commerce -->
+        <label class="sector-card">
+          <input type="radio" name="sector" value="ecommerce">
+          <span class="sector-icon"><i class="fas fa-shopping-cart"></i></span>
+          E-commerce
+        </label>
+        
+        <!-- Bâtiment -->
+        <label class="sector-card">
+          <input type="radio" name="sector" value="batiment">
+          <span class="sector-icon"><i class="fas fa-hammer"></i></span>
+          Bâtiment
+        </label>
+        
+        <!-- Transport -->
+        <label class="sector-card">
+          <input type="radio" name="sector" value="transport">
+          <span class="sector-icon"><i class="fas fa-bus"></i></span>
+          Transport
+        </label>
+        
+        <!-- Artisanat -->
+        <label class="sector-card">
+          <input type="radio" name="sector" value="artisanat">
+          <span class="sector-icon"><i class="fas fa-paint-brush"></i></span>
+          Artisanat
+        </label>
+        
+        <!-- Tourisme -->
+        <label class="sector-card">
+          <input type="radio" name="sector" value="tourisme">
+          <span class="sector-icon"><i class="fas fa-umbrella-beach"></i></span>
+          Tourisme
+        </label>
+        
+        <!-- Autre -->
+        <label class="sector-card">
+          <input type="radio" name="sector" value="autre">
+          <span class="sector-icon"><i class="fas fa-ellipsis-h"></i></span>
+          Autre
+        </label>
+      </div>
+    </fieldset>
+    
+    <!-- Bouton de soumission -->
+    <button type="submit" style="margin-top: 2rem;">
+      <i class="fas fa-paper-plane"></i> Envoyer la demande
+    </button>
+  </form>
+</section>
 
-  <footer>
-    <p>&copy; 2025 ProjeXion. Tous droits réservés.</p>
-    <p><a href="#" style="color: white; text-decoration: underline;">Mentions légales</a></p>
-  </footer>
-
-  <script>
-    // Gestion de la soumission du formulaire
-    document.getElementById('project-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const form = e.target;
-      const formData = new FormData(form);
-      
-      fetch(form.action, {
-        method: 'POST',
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
-      })
-      .then(response => {
-        if (response.ok) {
-          form.style.display = 'none';
-          document.getElementById('confirmation').style.display = 'block';
-          form.reset();
-        }
-      })
-      .catch(error => {
-        console.error('Error:', error);
-        alert("Une erreur s'est produite. Veuillez réessayer ou nous contacter via WhatsApp.");
+<script>
+  // Sélection visuelle des cartes
+  document.querySelectorAll('.sector-card').forEach(card => {
+    const radio = card.querySelector('input[type="radio"]');
+    
+    radio.addEventListener('change', () => {
+      document.querySelectorAll('.sector-card').forEach(c => {
+        c.classList.remove('selected');
       });
+      if (radio.checked) {
+        card.classList.add('selected');
+      }
     });
+    
+    // Améliore l'accessibilité
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        radio.checked = true;
+        card.click();
+      }
+    });
+  });
+</script>
 
-    // Smooth scrolling pour les ancres
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
-      });
-    });
-  </script>
 </body>
 </html>
